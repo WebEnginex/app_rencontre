@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { Profile } from '@/data/mockProfiles';
@@ -12,6 +11,10 @@ interface ProfileCardProps {
 
 export function ProfileCard({ profile, className }: ProfileCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [profile]);
   
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
